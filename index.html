@@ -8,7 +8,19 @@
     <title>Nike-TheCode</title>
   </head>
   <body>
+    <section class="filters">
+      <select name="sellerFilter" id="sellerFilter">
+        <option value="All">Todas</option>
+        <option value="Jordan">Jordan</option>
+        <option value="Nike Sportswear">Nike Sportswear</option>
+        <option value="NikeLab">NikeLab</option>
+        <option value="Nike by You">Nike by You</option>
+      </select>
+      <input type="number" id="priceFilter" placeholder="Precio máximo" />
+      <button id="priceBtn">Buscar por precio</button>
+      <button id="cleanFiltersBtn">Limpiar filtros</button>
     <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    </section>
+    <script type="module" src="/main.js" defer></script>
   </body>
 </html>
