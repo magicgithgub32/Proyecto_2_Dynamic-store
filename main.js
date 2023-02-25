@@ -44,7 +44,12 @@ const filterSneakers = (sneakers, select) => {
 
   console.log(filteredSneakers);
 
-  select === "All" ? printSneakers(sneakers) : printSneakers(filteredSneakers);
+  //Creo una constante para seleccionar el filtro del precio y poder ponerlo vacío
+  //en caso de que hagamos un filtro por seller después de haber hecho un fitro por precio
+  const priceFilter = document.querySelector("#priceFilter");
+
+  select === "All" ? printSneakers(sneakers) : (priceFilter.value = "");
+  printSneakers(filteredSneakers);
 };
 
 const selectSearch = document.querySelector("#sellerFilter");
@@ -56,6 +61,11 @@ const filterSneakersByPrice = (sneakers, maxPrice) => {
   const filteredSneakers = sneakers.filter(
     (sneaker) => sneaker.price <= maxPrice
   );
+
+  //Esto es para que cuando hagamos el filtro por precio, el selector de marca se ponga a 'todas'//
+  const selectSearch = document.querySelector("#sellerFilter");
+  selectSearch.value = selectSearch.options[0].value;
+
   console.log(filteredSneakers);
 
   printSneakers(filteredSneakers);
@@ -77,5 +87,15 @@ filterByPriceBtn.addEventListener("click", () => {
 
 const cleanFiltersBtn = document.querySelector("#cleanFiltersBtn");
 cleanFiltersBtn.addEventListener("click", () => {
-  printSneakers(sneakers);
+  resetFilters();
 });
+
+const resetFilters = () => {
+  const selectSearch = document.querySelector("#sellerFilter");
+  selectSearch.value = selectSearch.options[0].value;
+
+  const priceFilter = document.querySelector("#priceFilter");
+  priceFilter.value = "";
+
+  printSneakers(sneakers);
+};

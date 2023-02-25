@@ -7,7 +7,7 @@ export const sneakers = [
       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/50544d3c-3be0-4451-9691-702f6800b0c2/air-jordan-1-retro-high-og-zapatillas.png",
   },
   {
-    name: "Nike x Billie Ellish Air Force 1 High",
+    name: "Nike x B. Ellish Air Force 1 High",
     price: 159.99,
     seller: "NikeLab",
     image:

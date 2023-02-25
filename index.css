@@ -1,9 +1,22 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap);
 
+:root {
+--rc-filter-padding: .25rem .25rem;
+--rc-filter-margin-bottom: .5rem;
+--rc-filter-border-color: .5rem solid grey;
+--rc-filter-border-radius: 4px;
+--rc-filter-background-color: var(--rc-filter-background-color);
+}
+
+
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Open Sans';
+  background-color: rgb(252, 249, 249);
+  color: black;
 }
 
 #app {
@@ -22,7 +35,46 @@
 
 #app article {
   padding: 0.5rem;
-  color: black;
   text-align: center;
   margin: 1rem;
+  background-color: rgb(245, 237, 237);
+  box-shadow: 3px 3px 3px 1px rgba(90, 89, 89, 0.2);
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  align-items: flex-start;
+}
+
+#sellerFilter {
+  background-color: var(--rc-filter-background-color);
+  border-radius: var(--rc-filter-border-radius);
+  border-color: var(--rc-filter-border-color);
+  padding: var(--rc-filter-padding);
+  margin-bottom: var(--rc-filter-margin-bottom);
+}
+
+#priceFilter {
+  background-color: var(--rc-filter-background-color);
+  border-radius: var(--rc-filter-border-radius);
+  border-color: var(--rc-filter-border-color);
+  padding: var(--rc-filter-padding);
+  margin-bottom: var(--rc-filter-margin-bottom);
+}
+
+#priceBtn {
+  background-color: var(--rc-filter-background-color);
+  border-radius: var(--rc-filter-border-radius);
+  border-color: var(--rc-filter-border-color);
+  padding: var(--rc-filter-padding);
+  margin-bottom: var(--rc-filter-margin-bottom);
+}
+
+#cleanFiltersBtn {
+  background-color: var(--rc-filter-background-color);
+  border-radius: var(--rc-filter-border-radius);
+  border-color: var(--rc-filter-border-color);
+  padding: var(--rc-filter-padding);
 }
