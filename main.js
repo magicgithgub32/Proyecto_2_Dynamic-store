@@ -1,7 +1,7 @@
 import "./index.css";
 import { sneakers } from "./products";
 
-const container = document.querySelector("#app");
+const ProductsContainer = document.querySelector("#products");
 
 const mapSneakers = (sneakers) => {
   const mappedSneakers = sneakers.map((sneaker) => ({
@@ -17,7 +17,7 @@ const mapSneakers = (sneakers) => {
 };
 
 const printSneakers = (sneakers) => {
-  container.innerHTML = ""; //Si no hago esto, pese a filtrar, me saca todos los productos
+  ProductsContainer.innerHTML = ""; //Si no hago esto, pese a filtrar, me saca todos los productos
 
   for (let sneaker of sneakers) {
     const article = document.createElement("article");
@@ -29,7 +29,7 @@ const printSneakers = (sneakers) => {
     <p>${sneaker.seller}</p>
     `;
 
-    container.appendChild(article);
+    ProductsContainer.appendChild(article);
   }
 };
 
@@ -38,6 +38,10 @@ mapSneakers(sneakers);
 const filterSneakers = (sneakers, select) => {
   console.log(sneakers, select);
 
+  if (select === "All") {
+    printSneakers(sneakers);
+    return;
+  }
   const filteredSneakers = sneakers.filter(
     (sneaker) => sneaker.seller === select
   );
@@ -45,7 +49,7 @@ const filterSneakers = (sneakers, select) => {
   console.log(filteredSneakers);
 
   //Creo una constante para seleccionar el filtro del precio y poder ponerlo vacío
-  //en caso de que hagamos un filtro por seller después de haber hecho un fitro por precio
+  //en caso de querer hacer un filtro por seller después de haber hecho un fitro por precio y así que este campo vuelva a estar vacīo
   const priceFilter = document.querySelector("#priceFilter");
 
   select === "All" ? printSneakers(sneakers) : (priceFilter.value = "");
@@ -62,7 +66,7 @@ const filterSneakersByPrice = (sneakers, maxPrice) => {
     (sneaker) => sneaker.price <= maxPrice
   );
 
-  //Esto es para que cuando hagamos el filtro por precio, el selector de marca se ponga a 'todas'//
+  //Esto es para que cuando hagamos el filtro por precio, el selector de marca se ponga de vuelta a 'todas'//
   const selectSearch = document.querySelector("#sellerFilter");
   selectSearch.value = selectSearch.options[0].value;
 
@@ -99,3 +103,25 @@ const resetFilters = () => {
 
   printSneakers(sneakers);
 };
+
+const headerContainer = document.getElementById("headerContainer");
+const logoNike = document.createElement("img");
+logoNike.src =
+  "https://res.cloudinary.com/dxxkog06n/image/upload/v1677399642/Screenshot_2023-02-26_at_09.18.21_lpimut.png";
+const logoJordan = document.createElement("img");
+logoJordan.src =
+  "https://res.cloudinary.com/dxxkog06n/image/upload/v1677399642/Screenshot_2023-02-26_at_09.19.39_i2ku1u.png";
+headerContainer.appendChild(logoNike);
+headerContainer.appendChild(logoJordan);
+
+const header = document.createElement("header");
+header.textContent = "Zapatillas";
+headerContainer.classList.add("headerContainer-class");
+headerContainer.appendChild(header);
+
+const footer = document.createElement("footer");
+const footercontent = document.createElement("p");
+footercontent.textContent = "2023 Nike-TheCode. Todos los derechos reservados";
+footer.appendChild(footercontent);
+footer.classList.add("footer-class");
+document.body.appendChild(footer);
